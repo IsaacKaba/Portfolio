@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Mail } from "lucide-react";
 
 // --- Effet Machine à Écrire ---
 function Typewriter({ text }: { text: string }) {
@@ -143,17 +143,37 @@ type Project = {
   tags: string[];
   image?: string;
   githubUrl?: string;
+  reportUrl?: string; 
 };
 
 const PROJECTS: Project[] = [
   {
+    id: "ocr-c-crossword",
+    title: "OCR & Crossword Solver (C / GTK)",
+    description:
+      "A C-based Optical Character Recognition pipeline combined with an automated solver to resolve crossword puzzles. Features a custom neural network trained for character detection and a GTK graphical interface.",
+    tags: ["C", "Neural Network", "GTK", "Image Processing", "Team Project"],
+    image: "/ocr-image.webp",
+    githubUrl: "https://github.com/bedcheck/OCR-Crosswords",
+    reportUrl: "/technical-report-ocr-(french).pdf",
+  },
+  {
     id: "ml-stock-predictor",
     title: "ML Stock Market Predictor & Backtester",
     description:
-      "I built a Machine Learning Pipeline designed to predict the directional movements of a stock",
-    tags: ["Python", "XGBoost", "yfinance", "Backtesting"],
+      "Developed an end-to-end Machine Learning pipeline using Python and XGBoost to predict stock market directional trends. Integrated real-time financial data collection via yfinance, feature engineering with technical indicators, custom backtesting suite. Solo Project",
+    tags: ["Feature Engineering", "Python", "XGBoost", "yfinance", "Backtesting"],
     image: "/results.webp",
     githubUrl: "https://github.com/IsaacKaba/ML-Stock-Prediction",
+  },
+  {
+    id: "samurai-soul",
+    title: "Samourai Soul (C# / Unity)",
+    description:
+      "A 2D action game developed in C# with Unity. Embark as a legendary samurai fighting dark forces featuring Solo/Co-op modes, a Save System, Leaderboard, Boss Fights, and Pixel Art graphics across 3 distinct levels.",
+    tags: ["C#", "Unity", "2D Game Dev", "Pixel Art", "Game Design"],
+    image: "/samourai-image.jpg",
+    githubUrl: "https://github.com/raon2006/Samourai-soul",
   },
 ];
 
@@ -227,6 +247,14 @@ export default function Home() {
         >
           Projects
         </a>
+        {/* Bouton Contact Email dans la nav */}
+        <a
+          href="mailto:isaackaba09@gmail.com"
+          className="text-sm font-medium tracking-wide text-emerald-900 hover:text-emerald-950 bg-emerald-200/80 hover:bg-emerald-300/90 backdrop-blur-md px-5 py-2.5 rounded-full border border-emerald-300/80 transition duration-300 shadow-sm flex items-center gap-2"
+        >
+          <Mail className="w-4 h-4" />
+          Contact
+        </a>
       </header>
 
       {/* Section Hero */}
@@ -249,8 +277,15 @@ export default function Home() {
               Learn more about me
             </a>
           </p>
-          {/* Réseaux sociaux */}
+          {/* Réseaux sociaux & Email */}
           <div className="flex items-center justify-center gap-6 pt-4">
+            <a
+              href="mailto:ton.email@epita.fr"
+              className="text-stone-600 hover:text-emerald-800 transition transform hover:scale-110"
+              aria-label="Email"
+            >
+              <Mail className="w-7 h-7" />
+            </a>
             <a
               href="https://www.linkedin.com/in/isaac-kaba-7616332b9/"
               target="_blank"
@@ -277,46 +312,46 @@ export default function Home() {
         </div>
       </section>
 
-{/* Section About Me */}
-<section id="about" className="relative z-10 py-20 px-6">
-  <div className="max-w-4xl mx-auto space-y-8">
-    <h2 className="text-3xl font-bold text-stone-900 border-b border-stone-300/60 pb-4">
-      About Me
-    </h2>
+      {/* Section About Me */}
+      <section id="about" className="relative z-10 py-20 px-6">
+        <div className="max-w-4xl mx-auto space-y-8">
+          <h2 className="text-3xl font-bold text-stone-900 border-b border-stone-300/60 pb-4">
+            About Me
+          </h2>
 
-    <div className="p-8 rounded-2xl bg-[#E2DEC8]/60 backdrop-blur-md border border-stone-300/80 shadow-sm space-y-6 text-stone-700 leading-relaxed">
-      <p className="text-base sm:text-lg">
-        I’m a <strong className="text-stone-900 font-semibold">Computer Engineering student at EPITA</strong> (currently in my 3rd year of a 5-year program) passionate about the intersection of technology and finance. I focus on turning complex technical challenges into clean, efficient solutions .
-      </p>
+          <div className="p-8 rounded-2xl bg-[#E2DEC8]/60 backdrop-blur-md border border-stone-300/80 shadow-sm space-y-6 text-stone-700 leading-relaxed">
+            <p className="text-base sm:text-lg">
+              I’m a <strong className="text-stone-900 font-semibold">Computer Engineering student at EPITA</strong> (currently in my 3rd year of a 5-year program) passionate about the intersection of technology and finance. I focus on turning complex technical challenges into clean, efficient solutions .
+            </p>
 
-      <p className="text-base sm:text-lg">
-        Outside of software engineering, my experience as a certified youth counselor (<strong className="text-stone-900 font-semibold">BAFA</strong>) taught me clear communication, team adaptability, and how to stay composed under pressure.
-      </p>
+            <p className="text-base sm:text-lg">
+              Outside of software engineering, my experience as a certified youth counselor (<strong className="text-stone-900 font-semibold">BAFA</strong>) taught me clear communication, team adaptability, and how to stay composed under pressure.
+            </p>
 
-      <p className="text-base sm:text-lg">
-        When I’m not coding, I stay active. I’m big on sports, regularly playing basketball, hitting the gym, and running (currently training for the <strong className="text-stone-900 font-semibold">Paris 10K</strong>).
-      </p>
+            <p className="text-base sm:text-lg">
+              When I’m not coding, I stay active. I’m big on sports, regularly playing basketball, hitting the gym, and running (currently training for the <strong className="text-stone-900 font-semibold">Paris 10K</strong>).
+            </p>
 
-      {/* Badges / Quick Highlights */}
-      <div className="pt-4 flex flex-wrap gap-3 border-t border-stone-300/60">
-        <span className="text-xs font-mono font-medium bg-[#D8D2C2] text-stone-800 px-3 py-1.5 rounded-lg border border-stone-300/80">
-          📍 France
-        </span>
-        <span className="text-xs font-mono font-medium bg-[#D8D2C2] text-stone-800 px-3 py-1.5 rounded-lg border border-stone-300/80">
-          🎓 EPITA (3rd Year / 5-Year Program)
-        </span>
-        <span className="text-xs font-mono font-medium bg-[#D8D2C2] text-stone-800 px-3 py-1.5 rounded-lg border border-stone-300/80">
-          🏃‍♂️ Paris 10K Prep
-        </span>
-        <span className="text-xs font-mono font-medium bg-[#D8D2C2] text-stone-800 px-3 py-1.5 rounded-lg border border-stone-300/80">
-          🏀 Basketball & Gym
-        </span>
-      </div>
-    </div>
-  </div>
-</section>
+            {/* Badges / Quick Highlights */}
+            <div className="pt-4 flex flex-wrap gap-3 border-t border-stone-300/60">
+              <span className="text-xs font-mono font-medium bg-[#D8D2C2] text-stone-800 px-3 py-1.5 rounded-lg border border-stone-300/80">
+                📍 France
+              </span>
+              <span className="text-xs font-mono font-medium bg-[#D8D2C2] text-stone-800 px-3 py-1.5 rounded-lg border border-stone-300/80">
+                🎓 EPITA (3rd Year / 5-Year Program)
+              </span>
+              <span className="text-xs font-mono font-medium bg-[#D8D2C2] text-stone-800 px-3 py-1.5 rounded-lg border border-stone-300/80">
+                🏃‍♂️ Paris 10K Prep
+              </span>
+              <span className="text-xs font-mono font-medium bg-[#D8D2C2] text-stone-800 px-3 py-1.5 rounded-lg border border-stone-300/80">
+                🏀 Basketball & Gym
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Section Expériences */}
+      {/* Section Expériences */}
       <section id="experience" className="relative z-10 py-20 px-6">
         <div className="max-w-4xl mx-auto space-y-10">
           <h2 className="text-3xl font-bold text-stone-900 border-b border-stone-300/60 pb-4">
@@ -412,7 +447,8 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap gap-2 mt-6 text-xs font-mono">
+                  {/* Zone de la Tech Stack + Bouton Technical Report compact à côté */}
+                  <div className="flex flex-wrap items-center gap-2 mt-6 text-xs font-mono">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
@@ -421,6 +457,18 @@ export default function Home() {
                         {tag}
                       </span>
                     ))}
+
+                    {/* Bouton Technical Report PDF compact */}
+                    {project.reportUrl && (
+                      <a
+                        href={project.reportUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-emerald-900 hover:text-emerald-950 bg-emerald-100/80 hover:bg-emerald-200/90 px-2.5 py-1 rounded-md border border-emerald-300/80 transition duration-200"
+                      >
+                        📄 Technical Report (PDF)
+                      </a>
+                    )}
                   </div>
                 </div>
               </article>
