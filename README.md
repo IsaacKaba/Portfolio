@@ -2,7 +2,7 @@
 
 Welcome to the repository of my personal portfolio website! Designed to showcase my projects, work experience, and technical skills as a Computer Engineering student at EPITA.
 
-🔗 **Live Demo:** [isaackaba.vercel.app](https://isaac-kaba.vercel.app) 
+🔗 **Live Demo:** [isaac-kaba.vercel.app](https://isaac-kaba.vercel.app) 
 
 ---
 
