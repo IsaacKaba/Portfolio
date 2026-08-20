@@ -154,7 +154,7 @@ const PROJECTS: Project[] = [
       "A C-based Optical Character Recognition pipeline combined with an automated solver to resolve crossword puzzles. Features a custom neural network trained for character detection and a GTK graphical interface.",
     tags: ["C", "Neural Network", "GTK", "Image Processing", "Team Project"],
     image: "/ocr-image.webp",
-    githubUrl: "https://github.com/bedcheck/OCR-Crosswords",
+    githubUrl: "https://github.com/IsaacKaba/OCR-Crossword-Solver",
     reportUrl: "/technical-report-ocr-(french).pdf",
   },
   {
