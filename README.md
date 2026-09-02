@@ -1,4 +1,4 @@
-# Personal Portfolio — Isaac Kaba
+# Personal Portfolio - Isaac Kaba
 
 Welcome to the repository of my personal portfolio website! Designed to showcase my projects, work experience, and technical skills as a Computer Engineering student at EPITA.
 
