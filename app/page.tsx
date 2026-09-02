@@ -294,7 +294,7 @@ export default function Home() {
           </p>
 
           <p className="text-stone-600 max-w-xl mx-auto text-base sm:text-lg leading-relaxed font-normal">
-            Passionate about Tech and Finance, actively expanding into Cloud Computing.{" "}
+            Passionate about Tech and Finance, expanding into Cloud Computing.{" "}
             <a
               href="#about"
               className="text-emerald-800 font-medium underline underline-offset-4 hover:text-emerald-950 transition"
