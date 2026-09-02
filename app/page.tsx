@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { ArrowUpRight, Mail } from "lucide-react";
+import { ArrowUpRight, Mail, Menu, X } from "lucide-react";
 
 // --- Effet Machine à Écrire ---
 function Typewriter({ text }: { text: string }) {
@@ -216,45 +216,70 @@ const EXPERIENCES: Experience[] = [
 ];
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <main className="relative min-h-screen bg-[#EFECE6] text-stone-800 antialiased scroll-smooth">
       {/* Arrière-plan grandes formes */}
       <LargeShapesBackground />
 
       {/* Navigation haut à droite */}
-      <header className="fixed top-0 right-0 p-6 z-50 flex gap-3">
-        <a
-          href="#"
-          className="text-sm font-medium tracking-wide text-stone-700 hover:text-stone-950 bg-[#E5E1D8]/80 backdrop-blur-md px-5 py-2.5 rounded-full border border-stone-300/80 hover:border-stone-400 transition duration-300 shadow-sm"
+      {/* Header avec bouton 3 barres et menu au survol */}
+      <header 
+        className="fixed top-0 right-0 p-6 z-50 flex flex-col items-end"
+        onMouseEnter={() => setIsMenuOpen(true)}
+        onMouseLeave={() => setIsMenuOpen(false)}
+      >
+        {/* Bouton 3 barres (Burger) */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="flex items-center justify-center p-3 rounded-full bg-[#E5E1D8]/90 backdrop-blur-md border border-stone-300/80 hover:border-emerald-700/50 hover:bg-emerald-100/50 text-stone-800 transition duration-300 shadow-md"
+          aria-label="Toggle Menu"
         >
-          Home
-        </a>
-        <a
-          href="#about"
-          className="text-sm font-medium tracking-wide text-stone-700 hover:text-stone-950 bg-[#E5E1D8]/80 backdrop-blur-md px-5 py-2.5 rounded-full border border-stone-300/80 hover:border-stone-400 transition duration-300 shadow-sm"
-        >
-          About me
-        </a>
-        <a
-          href="#experience"
-          className="text-sm font-medium tracking-wide text-stone-700 hover:text-stone-950 bg-[#E5E1D8]/80 backdrop-blur-md px-5 py-2.5 rounded-full border border-stone-300/80 hover:border-stone-400 transition duration-300 shadow-sm"
-        >
-          Experience
-        </a>
-        <a
-          href="#projects"
-          className="text-sm font-medium tracking-wide text-stone-700 hover:text-stone-950 bg-[#E5E1D8]/80 backdrop-blur-md px-5 py-2.5 rounded-full border border-stone-300/80 hover:border-stone-400 transition duration-300 shadow-sm"
-        >
-          Projects
-        </a>
-        {/* Bouton Contact Email dans la nav */}
-        <a
-          href="mailto:isaackaba09@gmail.com"
-          className="text-sm font-medium tracking-wide text-emerald-900 hover:text-emerald-950 bg-emerald-200/80 hover:bg-emerald-300/90 backdrop-blur-md px-5 py-2.5 rounded-full border border-emerald-300/80 transition duration-300 shadow-sm flex items-center gap-2"
-        >
-          <Mail className="w-4 h-4" />
-          Contact
-        </a>
+          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+
+        {/* Menu Déroulant */}
+        {isMenuOpen && (
+          <nav className="mt-2 w-48 py-2 bg-[#E5E1D8]/95 backdrop-blur-md border border-stone-300/80 rounded-2xl shadow-xl flex flex-col gap-1 transition-all duration-300 animate-in fade-in slide-in-from-top-2">
+            <a
+              href="#"
+              onClick={() => setIsMenuOpen(false)}
+              className="px-5 py-2.5 text-sm font-medium text-stone-700 hover:text-stone-950 hover:bg-stone-200/50 transition duration-200"
+            >
+              Home
+            </a>
+            <a
+              href="#about"
+              onClick={() => setIsMenuOpen(false)}
+              className="px-5 py-2.5 text-sm font-medium text-stone-700 hover:text-stone-950 hover:bg-stone-200/50 transition duration-200"
+            >
+              About me
+            </a>
+            <a
+              href="#experience"
+              onClick={() => setIsMenuOpen(false)}
+              className="px-5 py-2.5 text-sm font-medium text-stone-700 hover:text-stone-950 hover:bg-stone-200/50 transition duration-200"
+            >
+              Experience
+            </a>
+            <a
+              href="#projects"
+              onClick={() => setIsMenuOpen(false)}
+              className="px-5 py-2.5 text-sm font-medium text-stone-700 hover:text-stone-950 hover:bg-stone-200/50 transition duration-200"
+            >
+              Projects
+            </a>
+            <div className="border-t border-stone-300/60 my-1"></div>
+            <a
+              href="mailto:isaac.kaba@epita.fr"
+              onClick={() => setIsMenuOpen(false)}
+              className="px-5 py-2.5 text-sm font-medium text-emerald-900 hover:bg-emerald-100/60 transition duration-200 flex items-center gap-2"
+            >
+              <Mail className="w-4 h-4" />
+              Contact
+            </a>
+          </nav>
+        )}
       </header>
 
       {/* Section Hero */}
@@ -269,7 +294,7 @@ export default function Home() {
           </p>
 
           <p className="text-stone-600 max-w-xl mx-auto text-base sm:text-lg leading-relaxed font-normal">
-            Passionate about Tech & Finance.{" "}
+            Passionate about Tech, Finance & Cloud.{" "}
             <a
               href="#about"
               className="text-emerald-800 font-medium underline underline-offset-4 hover:text-emerald-950 transition"
